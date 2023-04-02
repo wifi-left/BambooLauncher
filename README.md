@@ -1,5 +1,7 @@
 # Bamboo Launcher
 
+**English** | [简体中文](README-zh.md)
+
 ## Introduction
 
 This is a Minecraft launcher that is written in Node.js.
