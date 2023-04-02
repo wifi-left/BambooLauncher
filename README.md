@@ -4,6 +4,10 @@
 
 This is a Minecraft launcher that is written in Node.js.
 
+You can launcher the game on your web browser. (Even use your phone!)
+
+**The project is still in experiment.**
+
 ## Features
 
 - [ ] Web browser UI
@@ -11,8 +15,11 @@ This is a Minecraft launcher that is written in Node.js.
 - [ ] Login Microsoft account
 - [ ] Unofficial login (Such as authlib-injector) **(Unlock after logining your official account)**
 - [ ] Offline mode **(Only unlock after logining your official account)**
-- **More are coming soon!**
+- [ ] Multi-Language
+- [ ] **More are coming soon!**
 
-## Warn
+## Translation
 
-**The project is still in experiment.**
+Help us translate the project!
+
+**The project is still in experiment**, so it didn't have any key to be translated.
