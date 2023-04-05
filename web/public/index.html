@@ -2,23 +2,173 @@
 <html lang="zh">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="/public/quotes/gquery.min.js"></script>
-  <style>
-    .wrapper {
-      font-size: 36px;
-      color: #f90;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamboo Minecraft Launcher</title>
+    <script src="/public/quotes/gquery.min.js"></script>
+    <style>
+        .wrapper {
+            font-size: 36px;
+            color: #f90;
+        }
+
+        .app-root {
+            background-color: rgb(30, 30, 30);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+
+        .root-left-part {
+            display: inline-block;
+            width: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            transition: 200ms;
+        }
+
+        .left-account-icon {
+            transition: 200ms;
+            margin-top: 8px;
+            height: 60px;
+            display: inline-block;
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .left-account-icon:hover {
+            background-color: rgb(53, 53, 53);
+        }
+
+        .top-bar {
+            z-index: 100;
+            display: none;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .app-content {
+            background-color: #f90;
+            position: absolute;
+            top: 0;
+            left: 200px;
+            right: 0;
+            bottom: 0;
+        }
+
+        .top-title {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            color: white;
+            line-height: 60px;
+            height: 60px;
+            width: calc(100% - 68px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            text-indent: 68px;
+            background-image: url("/public/img/favicon.png");
+            background-size: 60px 60px;
+            background-repeat: no-repeat;
+        }
+
+        .btn-show-menu-bar {
+            background-image: url("/public/img/list-btn.png");
+            outline: none;
+            background-size: 30px 30px;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: 10px;
+            transition: 200ms;
+            top: 10px;
+            background-position: 50% 50%;
+            display: inline-block;
+            font-size: 0;
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+
+        }
+
+        .btn-show-menu-bar:hover {
+            background-color: rgb(53, 53, 53);
+        }
+
+        .btn-show-menu-bar:active {
+            background-color: rgb(40, 40, 40);
+        }
+
+        @media only screen and (max-width: 600px) {
+            .root-left-part {
+                position: fixed;
+                display: none;
+                z-index: 500;
+                top:60px;
+                width:calc(100% - 8px);
+                padding: 4px 4px 4px 4px;
+                height:calc(100% - 68px);
+                background-color: rgb(30, 30, 30);
+                opacity: 0;
+                
+            }
+
+            .app-content {
+                top: 60px;
+                left: 0px;
+                right: 0;
+                bottom: 0;
+            }
+
+            .root-left-part.show {
+                display: inline-block;
+                opacity: 1;
+            }
+
+            .top-bar {
+                display: inline-block;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <button type="button" id="btn">按钮</button>
-    <input type="text" name="" id="demo" value="" />
-    <div id="res">接收到的服务器端消息显示区域</div>
-  <script src="/public/app.js"></script>
+    <div class="app-root">
+        <!-- Small screen -->
+        <div class="top-bar">
+            <span class="top-title">Bamboo Minecraft Launcher</span>
+            <button onclick="show_or_hide_the_menubar();" class="btn-show-menu-bar" title="Show Or Hide the menu">
+                Show or hide the menu
+            </button>
+        </div>
+        <!-- Big screen -->
+
+        <div class="root-left-part">
+            <button class="left-account-icon">
+                switch account
+            </button>
+        </div>
+        <div class="app-content"></div>
+    </div>
+    <!-- <button type="button" id="btn">按钮</button>
+  <input type="text" name="" id="demo" value="" />
+  <div id="res">接收到的服务器端消息显示区域</div>
+  <script src="/public/event.js"></script> -->
+    <script src="/public/app.js"></script>
 </body>
 
 </html>

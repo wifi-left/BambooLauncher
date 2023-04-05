@@ -13,6 +13,10 @@ You can launcher the game on your web browser. (Even use your phone!)
 ## Features
 
 - [ ] Web browser UI
+- [ ] Mod loaders
+  - [ ] Fabric
+  - [ ] Quilt
+  - [ ] Forge
 - [ ] Game manager
 - [ ] Login Microsoft account
 - [ ] Unofficial login (Such as authlib-injector) **(Unlock after logining your official account)**

@@ -3,8 +3,11 @@ const http = require('http');        // HTTP服务器API
 const fs = require('fs');            // 文件系统API
 const express = require('express');
 const WS_MODULE = require("ws");
+const configControl = require("./config.js").configControl;
+var accountConfig = new configControl("accounts.json");
+var globleConfig = new configControl("config.json");
 
-const wsserver = require("./ws.js");
+const wsserver = require("./web_handle.js");
 // const iconv = require('iconv-lite')
 const readline = require('readline').createInterface({
     input: process.stdin,
@@ -22,8 +25,17 @@ var app = express();    // 创建新的HTTP服务器
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/web/public/" + "index.html");
 })
+app.get('/theme.css', function (req, res) {
+    let filename = __dirname + "/theme/" + globleConfig.get("theme", "default") + ".css";
+    if(!fs.existsSync(filename)) filename = __dirname + "/theme/default.css";;
+    res.sendFile(filename);
+})
 
 app.use('/public', express.static('web/public'))
+app.get('/favicon.ico',function(req,res){
+    res.sendFile(__dirname + "/web/public/img/favicon.ico");
+
+})
 
 app.get('*', function (req, res) {
     // console.log('404 handler..')
@@ -46,8 +58,7 @@ server = app.listen(port);
 
 // websocket 处理
 ws = new WS_MODULE.Server({ server });
-wsserver.wsParser(ws);
-
+wsserver.wsParser(ws, globleConfig, accountConfig);
 
 //
 
